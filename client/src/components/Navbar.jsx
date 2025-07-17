@@ -80,7 +80,7 @@ const Navbar = () => {
 
                 </UserButton>)
                     :
-                ( <button  onClick={openSignIn }  className="bg-black text-white px-8 py-2.5 rounded-full ml-4 transition-all duration-500">
+                ( <button  onClick={openSignIn}  className="bg-black text-white px-8 py-2.5 rounded-full ml-4 transition-all duration-500">
                         Login
                     </button>)}
 
@@ -89,10 +89,6 @@ const Navbar = () => {
                 </div>
 
             {/* Mobile Menu Button */}
-            
-          
-            
-
 
             <div className="flex items-center gap-3 md:hidden">
                  {user && <UserButton>
