@@ -20,7 +20,9 @@ const isOwnerPath = useLocation().pathname.includes("owner");
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/rooms' element={<AllRooms />} />
-          <Route path='/rooms/:id' element={<RoomDetails/>} />
+          <Route path='/rooms/:id' element={<RoomDetails />} />
+
+
         </Routes>
 
 

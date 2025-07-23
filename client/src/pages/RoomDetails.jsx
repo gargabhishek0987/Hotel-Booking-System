@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { assets, roomsDummyData } from '../assets/assets';
-import StarRating from '../components/StarRating';
+import { assets, roomsDummyData } from '../assets/assets'
+import StarRating from '../components/StarRating'
+
 
 const RoomDetails = () => {
     const { id } = useParams();
@@ -9,10 +10,12 @@ const RoomDetails = () => {
     const [mainImage, setMainImage] = useState(null);
 
     useEffect(() => {
+        console.log('id:', id);
+        console.log('roomsDummyData:', roomsDummyData);
         const room = roomsDummyData.find(room => (room._id === id))
         room && setRoom(room);
         room && setMainImage(room.images[0]);
-    }, [])
+    }, [id])
     
     return room && (
       
@@ -55,12 +58,16 @@ const RoomDetails = () => {
                     <h1 className='text-3xl md:text-4xl font-playfair'>Experience Luxury Like Never Before</h1>
 
                     <div className='flex flex-wrap items-center mt-3 mb-6 gap-4'>
-                        {room.amenities.map((item, index) => (
-                            <div key={index} className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100'>
-                                <img src={assets.facilityIcons[item] || assets.facilityIcons["default"]} alt={item} className='w-5 h-5 ' />
-                                <p className='text-xs'>{item}</p>
-                                </div>
-                            ))}
+                        {Array.isArray(room.amenities) && room.amenities.map((item, index) => (
+                          <div key={index} className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100'>
+                            {assets.facilityIcons && assets.facilityIcons[item] ? (
+                              <img src={assets.facilityIcons[item]} alt={item} className='w-5 h-5' />
+                            ) : (
+                              <span className='w-5 h-5 bg-gray-300 rounded' />
+                            )}
+                            <p className='text-xs'>{item}</p>
+                          </div>
+                        ))}
                     </div>
                 </div>
 
