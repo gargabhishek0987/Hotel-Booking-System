@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-import { assets, roomsDummyData } from '../assets/assets'
+import { Form, useParams } from 'react-router-dom';
+import { assets, roomsDummyData, facilityIcons, roomCommonData } from '../assets/assets'
 import StarRating from '../components/StarRating'
 
 
@@ -58,13 +58,11 @@ const RoomDetails = () => {
                     <h1 className='text-3xl md:text-4xl font-playfair'>Experience Luxury Like Never Before</h1>
 
                     <div className='flex flex-wrap items-center mt-3 mb-6 gap-4'>
-                        {Array.isArray(room.amenities) && room.amenities.map((item, index) => (
+                         {room.amenities.map((item, index) => (
                           <div key={index} className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100'>
-                            {assets.facilityIcons && assets.facilityIcons[item] ? (
-                              <img src={assets.facilityIcons[item]} alt={item} className='w-5 h-5' />
-                            ) : (
-                              <span className='w-5 h-5 bg-gray-300 rounded' />
-                            )}
+                            
+                              <img src={facilityIcons[item]} alt={item} className='w-5 h-5' />
+                           
                             <p className='text-xs'>{item}</p>
                           </div>
                         ))}
@@ -73,9 +71,75 @@ const RoomDetails = () => {
 
                 {/*Room Price*/}
                 <p className='text-2xl font-medium'>${room.pricePerNight}/night</p>
+
+            </div>
+            {/*CheckIn CheckOut Form*/}
+            <form className='flex flex-col md:flex-row items-start md:items-center justify-between bg-white shadow -[0px_0px_20px_rgba(0,0,0,0.15)] p-6 rounded-xl mx-auto mt-16 max-w-6xl'>
+                <div className='flex flex-col flex-wrap md:flex-row items-start md:items-center gap-4 md:gap-10 text-gray-500'>  
+                    <div className='flex flex-col'>
+
+                        <label htmlFor='checkInDate' className='font-medium'>Check-In </label>
+                       <input type="date" id='checkInDate' placeholder='Check-In' className='w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none' required />
+                    
+                    </div>
+                                        <div className='w-px h-15 bg-gray-300/70 max-md:hidden'></div>
+
+
+                    <div className='flex flex-col'>
+
+                        <label htmlFor='checkOutDate' className='font-medium'>Check-Out </label>
+                       <input type="date" id='checkOutDate' placeholder='Check-Out' className='w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none' required />
+                    
+                    </div>
+
+                    <div className='w-px h-15 bg-gray-300/70 max-md:hidden'></div>
+
+                     <div className='flex flex-col'>
+
+                        <label htmlFor='guests' className='font-medium'>Guests </label>
+                       <input type="number" id='guests' placeholder='0' className='max-w-20 rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none' required />
+                    
+                    </div>
+
+                </div>
+
+                <button
+    type='submit'
+    className='bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all text-white rounded-md max-md:w-full max:md:mt-6 md:px-25 py-3 md:px-25 py-3 md:py-4 text-base cursor-pointer'
+>
+ 
+                Check Availability</button>
+                
+            </form>
+            {/*Common Specifications*/}
+            <div className='mt-25 space-y-4'>
+                {roomCommonData.map((spec, index) => (
+                    <div key={index} className='flex items-start gap-2'>
+                        <img src={spec.icon} alt={`${spec.title}-icon`} className='w-6.5' />
+                        <div>
+                        <p className='text-base'>{spec.title}</p>
+                        <p className='text-gray-500'>{spec.description}</p>
+                        </div>
+                    </div>
+
+                   ))}
+            </div>
+            <div className='max-w-3xl border-y border-gray-300 my-15 py-10 test-gray-500'>
+                <p >
+                    Guests will be allocated on the ground floor according to availability. You get a confortable TWo bedroom apartment has a true city Feeling. The price quoted is for two guest, at the guest slot please mark te number of guests to get the exact price for groups. The Guests will be allocated ground floor according to availability.
+                 </p>
+
             </div>
 
-     </div>
+            {/*Hosted by*/}
+
+            <div className='flex flex-col items-startr gap-4'>
+                <div>
+                    <img src={room.hotel.owner.image} alt="Host" className='h-14 w-14 md:h-18 md:w-18 rounded-full' />
+                </div>
+            </div>
+
+     </div> 
   )
 }
 

@@ -5,6 +5,9 @@ import StarRating from '../components/StarRating';
 
 
 
+
+
+
 const CheckBox = ({ label, selected = false, onChange = () => { } }) => {
     return (
         <label className='flex gap-3 items-center cursor-pointer mt-2 text-sm'>
@@ -32,9 +35,12 @@ const RadioButton = ({ label, selected = false, onChange = () => { } }) => {
 const AllRooms = () => {
     const navigate = useNavigate();
     const [openFilters, setOpenFilters] = useState(false)
+
+    {/*Arrays initilization for  */}
     const roomTypes = ["Sigle Bed", "Double Bed", "Luxury Room", "Family Suite",];
     const priceRanges = ["0 to 500", "500 to 1000", "1000 to 2000", "2000 to 3000",];
     const sortOptions = ["Price: Low to High", "Price: High to Low", "Newest First"];
+
   return (
     <div className='flex flex-col-reverse lg:flex-row items-start justify-between pt-28 md:pt-28 px-4 md:px-16 lg:px-24 xl:px-32'>
           <div >
