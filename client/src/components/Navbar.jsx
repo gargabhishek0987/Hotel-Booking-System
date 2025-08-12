@@ -75,7 +75,7 @@ const Navbar = () => {
                
                 {user ? (<UserButton>
                     <UserButton.MenuItems>
-                        <UserButton.Action label="My Bookings"  labelIcon={<BookIcon/>} onClick={()=>navigate('/My Bookings') }></UserButton.Action>
+                        <UserButton.Action label="My Bookings"  labelIcon={<BookIcon/>} onClick={()=>navigate('/my-bookings') }></UserButton.Action>
                     </UserButton.MenuItems>
 
                 </UserButton>)
@@ -114,7 +114,7 @@ const Navbar = () => {
                     ))}
 
                 {user && <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all " onClick={() => 
-                    navugate('/owner') }>
+                    navigate('/owner') }>
                     
                       Dashboard
                     </button>}

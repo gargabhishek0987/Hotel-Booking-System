@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, useParams } from 'react-router-dom';
 import { assets, roomsDummyData, facilityIcons, roomCommonData } from '../assets/assets'
 import StarRating from '../components/StarRating'
+import Title from '../components/Title';
 
 
 const RoomDetails = () => {
@@ -10,7 +11,7 @@ const RoomDetails = () => {
     const [mainImage, setMainImage] = useState(null);
 
     useEffect(() => {
-        console.log('id:', id);
+        console.log('id:', id); 
         console.log('roomsDummyData:', roomsDummyData);
         const room = roomsDummyData.find(room => (room._id === id))
         room && setRoom(room);
@@ -145,9 +146,7 @@ const RoomDetails = () => {
                     </div>
                 </div>
             </div>
-            <button
-    className='px-6 py-2.5 mt-4 rounded text-white bg-blue-600 hover:bg-blue-700 transition-all cursor-pointer'
->
+            <button className='px-6 py-2.5 mt-4 rounded text-white bg-blue-600 hover:bg-blue-700 transition-all cursor-pointer'>
     Contact Now
 </button>
 
